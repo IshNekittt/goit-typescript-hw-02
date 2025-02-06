@@ -12,6 +12,7 @@ type ArrayItem = {
     [userData: string]: unknown;
   };
   alt_description: string;
+  description: string;
   likes: number;
   created_at: string;
   [field: string]: unknown;
