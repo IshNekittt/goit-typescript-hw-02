@@ -83,7 +83,7 @@ function App() {
       )}
       {page < totalPages && <LoadMoreBtn onClick={handleFetchPage} />}
       {error && <ErrorMessage />}
-      <Loader />
+      {isLoading && <Loader />}
       <ImageModal
         isOpen={isModalOpen}
         current={currentElem}
