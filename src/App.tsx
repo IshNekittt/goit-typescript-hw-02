@@ -31,17 +31,11 @@ function App() {
       try {
         setError(false);
         setIsLoading(true);
-        const {
-          results,
-          total_pages,
-        }: { results: Array<object>; total_pages: number } = await fetchResult(
-          query,
-          page
-        );
+        const { results, total_pages } = await fetchResult(query, page);
 
-        setTotalPages(total_pages);
+        setTotalPages(total_pages as number);
         setData((prev) => {
-          return [...prev, ...results];
+          return [...prev, ...(results as Array<Item>)];
         });
       } catch {
         setError(true);
@@ -89,7 +83,7 @@ function App() {
       )}
       {page < totalPages && <LoadMoreBtn onClick={handleFetchPage} />}
       {error && <ErrorMessage />}
-      {isLoading && <Loader />}
+      <Loader />
       <ImageModal
         isOpen={isModalOpen}
         current={currentElem}
