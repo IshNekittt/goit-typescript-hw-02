@@ -1,16 +1,22 @@
 import s from "./SearchBar.module.css";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import toast from "react-hot-toast";
-export default function SearchBar({ onSubmit }) {
+
+type Props = {
+  onSubmit: (value: string) => void;
+};
+
+export default function SearchBar({ onSubmit }: Props) {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     const processedQuery = query.trim();
 
     if (!processedQuery) {
-      return toast.error("Prompt required");
+      toast.error("Prompt required");
+      return;
     }
     onSubmit(processedQuery);
     setQuery("");
