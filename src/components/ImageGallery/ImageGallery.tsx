@@ -1,6 +1,13 @@
 import s from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
-export default function ImageGallery({ items, onModalOpen }) {
+import { Item } from "../../types/Item";
+
+type Props = {
+  items: Item[];
+  onModalOpen: (arg: Item) => void;
+};
+
+export default function ImageGallery({ items, onModalOpen }: Props) {
   return (
     <ul className={s.list}>
       {items.map((item) => {

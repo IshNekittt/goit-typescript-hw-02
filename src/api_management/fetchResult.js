@@ -7,6 +7,8 @@ const fetchResult = async (query, page = 1) => {
       page,
     },
   });
+  console.log(data);
+
   return data;
 };
 export default fetchResult;

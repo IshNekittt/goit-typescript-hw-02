@@ -1,13 +1,18 @@
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import "./App.css";
+
 import fetchResult from "./api_management/fetchResult";
+
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "./components/Loader/Loader";
 import SearchBar from "./components/SearchBar/SearchBar";
-import { useEffect, useState } from "react";
 import ImageModal from "./components/ImageModal/ImageModal";
+
+import { Item } from "./types/Item";
+
+import "./App.css";
 
 function App() {
   const [data, setData] = useState<Array<object>>([]);
@@ -17,10 +22,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [totalPages, setTotalPages] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentElem, setCurrentElem] = useState<Record<
-    string,
-    unknown
-  > | null>(null);
+  const [currentElem, setCurrentElem] = useState<Item | null>(null);
 
   useEffect(() => {
     if (!query) return;
