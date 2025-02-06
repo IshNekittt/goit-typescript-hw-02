@@ -16,12 +16,12 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState<Array<object>>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [totalPages, setTotalPages] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [currentElem, setCurrentElem] = useState<Item | null>(null);
 
   useEffect(() => {
