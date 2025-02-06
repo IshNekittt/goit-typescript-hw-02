@@ -1,0 +1,22 @@
+.loadBtn {
+  padding: 15px 25px;
+  outline: none;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #ececec;
+}
+
+.loadBtn:hover {
+  background-color: #121212;
+}
+
+@media (prefers-color-scheme: light) {
+  .loadBtn {
+    background-color: #ececec;
+    color: #121212;
+  }
+  .loadBtn:hover {
+    background-color: #dedede;
+  }
+}
