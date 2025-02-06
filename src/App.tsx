@@ -68,7 +68,7 @@ function App() {
     }
   };
 
-  const handleModalOpen = (elem: Record<string, unknown>): void => {
+  const handleModalOpen = (elem: Record<string, any>): void => {
     if (isModalOpen) return;
     setCurrentElem(elem);
     setIsModalOpen(true);

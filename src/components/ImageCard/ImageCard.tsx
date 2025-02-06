@@ -1,5 +1,10 @@
 import s from "./ImageCard.module.css";
-export default function ImageCard({ values, handleClick }) {
+
+type Props = {
+  values: Record<string, any>;
+  handleClick: (arg: Record<string, any>) => void;
+};
+export default function ImageCard({ values, handleClick }: Props) {
   return (
     <div className={s.wrapper}>
       <img
