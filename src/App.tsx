@@ -10,23 +10,32 @@ import { useEffect, useState } from "react";
 import ImageModal from "./components/ImageModal/ImageModal";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Array<object>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [totalPages, setTotalPages] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentElem, setCurrentElem] = useState(null);
+  const [currentElem, setCurrentElem] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
 
   useEffect(() => {
     if (!query) return;
 
-    const handleFetch = async (query) => {
+    const handleFetch = async (query: string): Promise<void> => {
       try {
         setError(false);
         setIsLoading(true);
-        const { results, total_pages } = await fetchResult(query, page);
+        const {
+          results,
+          total_pages,
+        }: { results: Array<object>; total_pages: number } = await fetchResult(
+          query,
+          page
+        );
 
         setTotalPages(total_pages);
         setData((prev) => {
@@ -42,9 +51,10 @@ function App() {
     handleFetch(query);
   }, [query, page]);
 
-  const handleChangeQuery = (value) => {
+  const handleChangeQuery = (value: string): void => {
     if (value === query) {
-      return toast.error("Please change the query");
+      toast.error("Please change the query");
+      return;
     }
     setQuery(value);
     setData([]);
@@ -52,19 +62,19 @@ function App() {
     setTotalPages(0);
   };
 
-  const handleFetchPage = () => {
+  const handleFetchPage = (): void => {
     if (page < totalPages) {
       setPage((prev) => prev + 1);
     }
   };
 
-  const handleModalOpen = (elem) => {
+  const handleModalOpen = (elem: Record<string, unknown>): void => {
     if (isModalOpen) return;
     setCurrentElem(elem);
     setIsModalOpen(true);
   };
 
-  const handleModalClose = () => {
+  const handleModalClose = (): void => {
     setCurrentElem(null);
     setIsModalOpen(false);
   };
