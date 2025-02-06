@@ -5,7 +5,7 @@ const fetchResult = async (
   query: string,
   page = 1
 ): Promise<SearchResponse> => {
-  const { data } = await axios.get<Record<string, any>>(
+  const { data } = await axios.get<Record<string, unknown>>(
     "https://api.unsplash.com/search/photos",
     {
       params: {

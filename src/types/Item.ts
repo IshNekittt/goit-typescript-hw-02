@@ -9,12 +9,12 @@ type ArrayItem = {
   };
   user: {
     username: string;
-    [userData: string]: any;
+    [userData: string]: unknown;
   };
   alt_description: string;
   likes: number;
   created_at: string;
-  [field: string]: any;
+  [field: string]: unknown;
 };
 
 export type Item = Partial<ArrayItem>;
