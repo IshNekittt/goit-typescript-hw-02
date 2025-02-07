@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function SearchBar({ onSubmit }: Props) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
